@@ -1,9 +1,10 @@
 
 public abstract class User {
-    String login;
-    String password;
-    String name;
-    String contact;
+    private String login;
+    private String password;
+    private String name;
+    private String contact;
+
     public User(String login, String password, String name, String contact){
         this.login = login;
         this.password = password;
