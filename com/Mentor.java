@@ -8,7 +8,6 @@ public class Mentor extends User{
         super(login, password, name, contact);
         mentors.add(this);
     }
-
     public void removeMentor(User mentor){
         mentors.remove(mentor);
     }
@@ -20,8 +19,6 @@ public class Mentor extends User{
     public List<User> getMentors(){
         return mentors;
     }
-
-    
 
 }
 
