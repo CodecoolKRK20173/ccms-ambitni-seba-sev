@@ -1,4 +1,7 @@
-package PACKAGE_NAME;
+public class Jerzy extends User{
 
-public class Jerzy {
+    public Jerzy(){
+        super("admin", "admin", "Jerzy", "420 213 769");
+    }
+
 }
