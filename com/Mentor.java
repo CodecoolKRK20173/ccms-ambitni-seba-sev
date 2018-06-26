@@ -4,8 +4,8 @@ import java.util.List;
 public class Mentor extends User{
     private static ArrayList<User> mentors = new ArrayList<User>();
 
-    public Mentor(String name, String pass){
-        super(name,pass);
+    public Mentor(String login, String password, String name, String contact){
+        super(login, password, name, contact);
         mentors.add(this);
     }
 
