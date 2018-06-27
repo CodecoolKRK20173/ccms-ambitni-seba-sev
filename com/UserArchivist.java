@@ -34,7 +34,7 @@ public class UserArchivist {
         String header = "class,name,login,password,contact,classroom";
 
         try{
-            fw = new FileWriter(filename, false);
+           fw = new FileWriter(filename, false);
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -42,9 +42,9 @@ public class UserArchivist {
         BufferedWriter bw = new BufferedWriter(fw);
 
         try{
-            fw.write(header);
+            bw.write(header);
             for(User user: users){
-                fw.write(user.toCSV());
+                bw.write(user.toCSV());
             }
         }catch(IOException e){
             e.printStackTrace();
