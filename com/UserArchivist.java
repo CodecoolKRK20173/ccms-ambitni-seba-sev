@@ -17,7 +17,7 @@ public class UserArchivist {
             Scanner scanner = new Scanner(data);
             while (scanner.hasNextLine()){
                 String line = scanner.nextLine();
-                String[] userInfo = line.split("\t");
+                String[] userInfo = line.split(",");
                 fileLines.add(userInfo);
             }
             scanner.close();
@@ -30,11 +30,11 @@ public class UserArchivist {
     
 
     public void exportUsersToFile(String filename, List<User> users){
-        FileWirter fw = null;
+        FileWriter fw = null;
         String header = "class,name,login,password,contact,classroom";
 
         try{
-            fw = new FileWriter(filename, false);
+           fw = new FileWriter(filename, false);
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -42,9 +42,9 @@ public class UserArchivist {
         BufferedWriter bw = new BufferedWriter(fw);
 
         try{
-            fw.write(header);
+            bw.write(header);
             for(User user: users){
-                fw.write(user.toCSV());
+                bw.write(user.toCSV());
             }
         }catch(IOException e){
             e.printStackTrace();
