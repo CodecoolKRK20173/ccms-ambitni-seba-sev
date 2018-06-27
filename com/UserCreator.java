@@ -22,10 +22,11 @@ public class UserCreator {
         fileLines = UserArchivist.importUsersFromFile("userData.csv");
         getPresentList();
         createUsersList();
-
+        createAssignments();
     }
 
     public void createUsersList(){
+        fileLines.remove(0); // removing header
 
         for (String[] userInfo : fileLines){
             String role = userInfo[ROLE_INDEX];
@@ -52,7 +53,7 @@ public class UserCreator {
                 
             users.add(newUser);
             }
-        users.remove(0); //remove csv header
+        //users.remove(0); //remove csv header //opiepszyc serweryna za to niedopaczenie
     }
 
     public List<User> getUsersList(){
@@ -69,6 +70,33 @@ public class UserCreator {
 
     private boolean isPresent(User student){
         return presentStudents.contains(student.getContact());
+    }
+
+    private void createAssignments(){
+        ArrayList<String> names = UserArchivist.getAssignmentNames("assignment.csv");
+        ArrayList<String[]> doneAssignments = UserArchivist.importUsersFromFile("doneAssignments.csv");
+        ArrayList<Student> students = Student.getStudents();
+
+        for(String name : names){
+            Assignment ass = new Assignment(name);
+            Assignment.addAssignment(new Assignment(name));
+            for (String[] line : doneAssignments) {
+
+                if(line[0].equals(name)){
+                    for (Student stud : students){
+
+                        if(stud.getContact().equals(line[2])){
+                            ass.setGrade(Integer.parseInt(line[1]));
+                            stud.addAssignment(ass);
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+
     }
 
 }
