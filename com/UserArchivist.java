@@ -6,7 +6,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 
+
 public class UserArchivist {
+    private static String usersHeader = "class,name,login,password,contact,classroom";
 
     public static ArrayList<String[]> importUsersFromFile(String filename){
 
@@ -27,14 +29,32 @@ public class UserArchivist {
         }
         return fileLines;
     }
-    
+
+    public static ArrayList<String> getAssignmentNames(String filename){
+        ArrayList<String> names = new ArrayList<>();
+        for(String[] line : importUsersFromFile(filename)){
+            names.add(line[0]);
+        }
+        return names;
+    }
+
+
 
     public void exportUsersToFile(String filename, List<User> users){
+        List<String> list = new ArrayList<>();
+        for(User user : users){
+            list.add(user.toCSV());
+        }
+
+        exportListToCSV(filename, list, usersHeader);
+    }
+
+    public void exportListToCSV(String filename, List<String> list, String header){
         FileWriter fw = null;
-        String header = "class,name,login,password,contact,classroom";
+
 
         try{
-           fw = new FileWriter(filename, false);
+            fw = new FileWriter(filename, false);
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -43,8 +63,8 @@ public class UserArchivist {
 
         try{
             bw.write(header);
-            for(User user: users){
-                bw.write(user.toCSV());
+            for(String line: list){
+                bw.write(line);
             }
         }catch(IOException e){
             e.printStackTrace();
