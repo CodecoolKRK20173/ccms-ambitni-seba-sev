@@ -1,18 +1,18 @@
+import java.util.ArrayList;
+
 public class Assignment {
     private String name;
-    private boolean isDone = false;
     private int grade;
+
+    private static ArrayList<Assignment> assignments = new ArrayList<>();
 
     public Assignment(String name){
         this.name = name;
+        assignments.add(this);
     }
 
     public String getName() {
         return name;
-    }
-
-    public void doAssignment(){
-        isDone = true;
     }
 
     public void setGrade(int grade) {
@@ -23,14 +23,20 @@ public class Assignment {
         return grade;
     }
 
-    public boolean isDone() {
-        return isDone;
+    public static ArrayList<Assignment> getAssignments() {
+        return assignments;
+    }
+
+    public static Assignment getAssignment(int index){
+        return assignments.get(index);
     }
 
     public String toString(){
-        String mark = isDone? "x" : " ";
-        return "[" + mark + "] " + name + " Grade: " + grade;
+        return name + " Grade: " + grade;
     }
 
+    public String toCSV(){
+        return name + "," + grade;
+    }
 }
 
