@@ -3,6 +3,7 @@ import java.util.List;
 
 public class Mentor extends User{
     private static ArrayList<User> mentors = new ArrayList<User>();
+    private static ArrayList<String> classrooms = new ArrayList<>();
 
     public Mentor(String login, String password, String name, String contact){
         super(login, password, name, contact);
@@ -18,6 +19,14 @@ public class Mentor extends User{
 
     public List<User> getMentors(){
         return mentors;
+    }
+
+    public static ArrayList<String> getClassrooms() {
+        return classrooms;
+    }
+
+    public static String getClassroom(int index){
+        return classrooms.get(index);
     }
 
 }
