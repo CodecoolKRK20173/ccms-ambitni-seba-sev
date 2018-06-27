@@ -1,7 +1,10 @@
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.IOException;
 
 public class UserArchivist {
 
@@ -14,17 +17,39 @@ public class UserArchivist {
             Scanner scanner = new Scanner(data);
             while (scanner.hasNextLine()){
                 String line = scanner.nextLine();
-                String[] userInfo = line.split(",");
+                String[] userInfo = line.split("\t");
                 fileLines.add(userInfo);
             }
             scanner.close();
         } 
-        catch (Exception e){
+        catch (IOException e){
             e.printStackTrace();
         }
         return fileLines;
     }
+    
 
-    //exportUsersToFile
+    public void exportUsersToFile(String filename, List<User> users){
+        FileWirter fw = null;
+        String header = "class,name,login,password,contact,classroom";
+
+        try{
+            fw = new FileWriter(filename, false);
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
+        BufferedWriter bw = new BufferedWriter(fw);
+
+        try{
+            fw.write(header);
+            for(User user: users){
+                fw.write(user.toCSV());
+            }
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
 
 }
