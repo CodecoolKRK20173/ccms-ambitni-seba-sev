@@ -8,14 +8,17 @@ public class Assignment {
 
     public Assignment(String name){
         this.name = name;
-        assignments.add(this);
     }
 
     public String getName() {
         return name;
     }
 
-    public void setGrade(int grade) {
+    public static void addAssignment(Assignment a){
+        assignments.add(a);
+    }
+
+    public void setGrade(Integer grade) {
         this.grade = grade;
     }
 
@@ -23,8 +26,12 @@ public class Assignment {
         return grade;
     }
 
-    public static ArrayList<Assignment> getAssignments() {
-        return assignments;
+    public static ArrayList<String> getAssignmentsToList() {
+        ArrayList<String> names = new ArrayList<>();
+        for(Assignment a : assignments){
+            names.add(a.getName());
+        }
+        return names;
     }
 
     public static Assignment getAssignment(int index){
