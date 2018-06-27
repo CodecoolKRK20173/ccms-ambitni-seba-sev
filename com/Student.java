@@ -55,6 +55,9 @@ public class Student extends User{
     }
 
     public String toCSV(){
-        return super.toCSV() + this.classroom;
+        String csv = super.toCSV();
+        csv = csv.substring(0, csv.length()-1) + this.classroom;
+        return csv;
+
     }
 }
