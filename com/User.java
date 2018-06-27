@@ -34,7 +34,9 @@ public abstract class User {
     }
 
     public String toCSV(){
-        return this.getClass().getSimpleName()+ "," + name + "," + login + "," + password + "," + contact;
+        return this.getClass().getSimpleName()+ "," + name + "," + login + "," + password + "," + contact + ", ";
     }
+
+    public void setClassroom(String classroom){}
 
 }
