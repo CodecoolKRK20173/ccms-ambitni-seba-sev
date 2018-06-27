@@ -5,7 +5,7 @@ public class Student extends User{
     private static ArrayList<User> students = new ArrayList<>();
     private ArrayList<Assignment> assignments = new ArrayList<>();
     private boolean presence = false;
-    private String classroom;
+    private String classroom = "Not assigned";
 
     public Student(String login, String password, String name, String contact){
         super(login, password, name, contact);
@@ -33,7 +33,7 @@ public class Student extends User{
         return assignments;
     }
 
-    public boolean isPresent() {
+    public Boolean isPresent() {
         return presence;
     }
 
@@ -60,4 +60,18 @@ public class Student extends User{
         return csv;
 
     }
+
+    public String toString(){
+        return super.toString() + " Presence: " + isPresent().toString();
+    }
+
+    public String presenceCSV(){
+        if(isPresent()) {
+            return getContact();
+        }else{
+            return null;
+        }
+    }
+
+
 }
