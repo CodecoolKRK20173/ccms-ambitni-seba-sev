@@ -32,4 +32,9 @@ public abstract class User {
     public String toString(){
         return "login: " + getLogin() + " pass: " + getPassword() + " name: " + getName() + " contact: " + getContact();
     }
+
+    public String toCSV(){
+        return this.getClass().getSimpleName()+ "," + name + "," + login + "," + password + "," + contact;
+    }
+
 }
