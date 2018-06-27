@@ -1,8 +1,9 @@
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Student extends User{
-    private static ArrayList<User> students = new ArrayList<>();
+    private static ArrayList<Student> students = new ArrayList<>();
     private ArrayList<Assignment> assignments = new ArrayList<>();
     private boolean presence = false;
     private String classroom = "Not assigned";
@@ -21,7 +22,7 @@ public class Student extends User{
         return students.get(index);
     }
 
-    public static ArrayList<User> getStudents() {
+    public static ArrayList<Student> getStudents() {
         return students;
     }
 
@@ -73,5 +74,12 @@ public class Student extends User{
         }
     }
 
+    public List<String> assignmetCSV(){
+        ArrayList<String> doneAss = new ArrayList<>();
+        for(Assignment a : this.assignments){
+            doneAss.add(a.toCSV() + "," + getContact());
+        }
 
+        return doneAss;
+    }
 }
