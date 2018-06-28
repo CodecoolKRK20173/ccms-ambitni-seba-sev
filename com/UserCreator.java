@@ -78,7 +78,7 @@ public class UserCreator {
         ArrayList<Student> students = Student.getStudents();
 
         for(String name : names){
-            Assignment ass = new Assignment(name);
+
             Assignment.addAssignment(new Assignment(name));
             for (String[] line : doneAssignments) {
 
@@ -86,8 +86,10 @@ public class UserCreator {
                     for (Student stud : students){
 
                         if(stud.getContact().equals(line[2])){
+                            Assignment ass = new Assignment(name);
                             ass.setGrade(Integer.parseInt(line[1]));
                             stud.addAssignment(ass);
+                            break;
                         }
                     }
                 }
