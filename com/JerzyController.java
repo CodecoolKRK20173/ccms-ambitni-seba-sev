@@ -20,7 +20,7 @@ public class JerzyController{
             while(menuRunning){
                 System.out.println("\n");
                 printMenu();
-                choice = input.nextInt();
+                choice = promptForInt();
 
                 switch(choice){
                     case 1:
@@ -62,6 +62,19 @@ public class JerzyController{
             System.out.println("Provide numeric value!");
         }
             
+    }
+
+    private int promptForInt() {
+        Integer num = null;
+
+        while(num == null){
+            try {
+                num = input.nextInt();
+            } catch (InputMismatchException e){
+                input.next();
+            }
+        }
+        return num;
     }
     
 
