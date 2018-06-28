@@ -63,7 +63,7 @@ public class Student extends User{
     }
 
     public String toString(){
-        return super.toString() + " Presence: " + isPresent().toString();
+        return super.toString() + "Classroom: " + classroom + " Presence: " + isPresent().toString();
     }
 
     public static List<String> presenceCSV(){
