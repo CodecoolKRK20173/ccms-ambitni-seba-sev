@@ -86,8 +86,8 @@ public class LoginController{
         }
         else if(role.equals("Mentor")){
             System.out.println("Zalogowano mentora!");
-            //MentorController mc = new MentorController();
-            // mc.launchController();
+            MentorController mc = new MentorController();
+            mc.launchController();
         }
         else if(role.equals("Employee")){
             EmployeeController ec = new EmployeeController();
