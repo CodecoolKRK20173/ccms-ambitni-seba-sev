@@ -93,13 +93,16 @@ public class LoginController{
             EmployeeController ec = new EmployeeController();
             ec.launchController();
         }else{
-            // StudentController sc = new StudentContoller();
-            // sc.launchController();
+             StudentController sc = new StudentController((Student) userLoggingIn);
+             sc.launchController();
         }
     }
-    //public static void main(String[] args){
-    //    LoginController lc = new LoginController();
-    //    lc.loginProcess();
-    //}
+    public static void main(String[] args){
+
+        UserCreator u = new UserCreator();
+
+        LoginController lc = new LoginController(u.getUsersList());
+        lc.loginProcess();
+    }
     
 }

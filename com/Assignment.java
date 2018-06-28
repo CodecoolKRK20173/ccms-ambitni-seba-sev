@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Assignment {
     private String name;
@@ -17,6 +18,8 @@ public class Assignment {
     public static void addAssignment(Assignment a){
         assignments.add(a);
     }
+
+    public static List<Assignment> getAssignments(){ return assignments; }
 
     public void setGrade(Integer grade) {
         this.grade = grade;
@@ -39,7 +42,7 @@ public class Assignment {
     }
 
     public String toString(){
-        return name + " Grade: " + grade;
+        return name + ", Grade: " + grade;
     }
 
     public String toCSV(){
