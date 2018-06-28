@@ -6,7 +6,7 @@ public class View {
     private static String[] employeeList = {"Show Students"};
     private static String[] studentList = {"Submit Assignment", "Show grades"};
     private static String[] jerzyList = {"Show mentors", "Show Students", "Add Mentor", "Remove Mentor", "Edit Mentor"};
-    private static String[] mentorList = {"Show Students", "Add Student", "Remove Student", "Edit Student", "Add assignment"
+    private static String[] mentorList = {"Show Students", "Add Student to classroom", "Remove Student from classroom", "Edit Student", "Add assignment"
             ,"Grade Assignment", "Check Attendance"};
 
 

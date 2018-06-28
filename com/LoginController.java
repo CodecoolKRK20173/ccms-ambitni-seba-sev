@@ -70,7 +70,7 @@ public class LoginController{
         else return false;
     }
 
-    private void loginProcess(){
+    public void loginProcess(){
         String login = provideLogin();
         String password = providePassword();
         loginLogic(login, password);
@@ -97,12 +97,6 @@ public class LoginController{
              sc.launchController();
         }
     }
-    public static void main(String[] args){
 
-        UserCreator u = new UserCreator();
-
-        LoginController lc = new LoginController(u.getUsersList());
-        lc.loginProcess();
-    }
     
 }
