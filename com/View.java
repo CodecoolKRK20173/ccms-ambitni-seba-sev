@@ -11,6 +11,10 @@ public class View {
 
 
 
+    public static void clearTerminalScreen() {
+        System.out.print("\033[H\033[2J");
+        }
+
     public static void printList(List<String> list){
         int i = 1;
         for(String s : list){
@@ -30,6 +34,7 @@ public class View {
             System.out.println("    ("+ i +") " + line);
             i++;
         }
+        System.out.println("    (0) Exit");
 
 
     }
