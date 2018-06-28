@@ -1,7 +1,4 @@
 import java.util.Scanner;
-
-import com.sun.javafx.collections.ElementObservableListDecorator;
-
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -93,8 +90,8 @@ public class LoginController{
             // mc.launchController();
         }
         else if(role.equals("Employee")){
-            //EmployeeController ec = new EmployeeController();
-            // ec.launchController();
+            EmployeeController ec = new EmployeeController();
+            ec.launchController();
         }else{
             // StudentController sc = new StudentContoller();
             // sc.launchController();
