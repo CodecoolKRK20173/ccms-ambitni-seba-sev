@@ -40,7 +40,7 @@ public class UserArchivist {
 
 
 
-    public void exportUsersToFile(String filename, List<User> users){
+    public static void exportUsersToFile(String filename, List<User> users){
         List<String> list = new ArrayList<>();
         for(User user : users){
             list.add(user.toCSV());
@@ -49,23 +49,16 @@ public class UserArchivist {
         exportListToCSV(filename, list, usersHeader);
     }
 
-    public void exportListToCSV(String filename, List<String> list, String header){
-        FileWriter fw = null;
-
-
+    public static void exportListToCSV(String filename, List<String> list, String header){
+        FileWriter fw;
         try{
             fw = new FileWriter(filename, false);
-        }catch(IOException e){
-            e.printStackTrace();
-        }
 
-        BufferedWriter bw = new BufferedWriter(fw);
-
-        try{
-            bw.write(header);
-            for(String line: list){
-                bw.write(line);
+            fw.write(header+ "\n");
+            for (String line : list) {
+                fw.write(line + "\n");
             }
+            fw.close();
         }catch(IOException e){
             e.printStackTrace();
         }

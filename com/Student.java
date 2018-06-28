@@ -66,12 +66,14 @@ public class Student extends User{
         return super.toString() + " Presence: " + isPresent().toString();
     }
 
-    public String presenceCSV(){
-        if(isPresent()) {
-            return getContact();
-        }else{
-            return null;
+    public static List<String> presenceCSV(){
+        List<String> presList = new ArrayList<>();
+        for(Student s : students){
+            if(s.isPresent()){
+                presList.add(s.getContact());
+            }
         }
+        return  presList;
     }
 
     public List<String> assignmetCSV(){

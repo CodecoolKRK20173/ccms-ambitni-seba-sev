@@ -35,9 +35,9 @@ public class UserCreator {
             String password = userInfo[PASSWORD_INDEX];
             String contact = userInfo[CONTACT_INDEX];
             String classroom = "";
-            if(userInfo[CLASSROOM_INDEX] != " "){
+            try{
                 classroom = userInfo[CLASSROOM_INDEX];
-              }
+            }catch(IndexOutOfBoundsException e){}
             User newUser;
             if(role.equals("Jerzy")){
                 newUser = new Jerzy();}
