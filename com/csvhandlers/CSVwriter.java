@@ -1,3 +1,9 @@
+package com.csvhandlers;
+
+import com.models.Assignment;
+import com.models.Student;
+import com.models.User;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +26,7 @@ public class CSVwriter {
     }
 
     private void saveAssignments(){
-        UserArchivist.exportListToCSV("assignment.csv", Assignment.getAssignmentsToList(), "name");
+        UserArchivist.exportListToCSV("assignment.csv", Assignment.getAssignmentsToList(), "");
     }
 
     private void savePresence(){

@@ -1,3 +1,4 @@
+package com.models;
 
 public abstract class User {
     private String login;
@@ -42,7 +43,7 @@ public abstract class User {
     }
 
     public String toString() {
-        return "login: " + getLogin() + " pass: " + getPassword() + " name: " + getName() + " contact: " + getContact();
+        return "Name: " + getName() + " Contact: " + getContact();
     }
 
     public String toCSV() {

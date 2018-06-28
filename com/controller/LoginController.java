@@ -1,3 +1,8 @@
+package com.controller;
+
+import com.models.Student;
+import com.models.User;
+
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
@@ -79,9 +84,8 @@ public class LoginController{
 
     private void chooseController(User userLoggingIn){
         String role = userLoggingIn.getClass().getSimpleName();
-
         if(role.equals("Jerzy")){
-            JerzyController jc = new JerzyController();
+            JerzyController jc = new JerzyController(users);
             jc.launchController();
         }
         else if(role.equals("Mentor")){

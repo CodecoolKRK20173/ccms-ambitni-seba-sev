@@ -1,3 +1,7 @@
+package com.csvhandlers;
+
+import com.models.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,10 +54,10 @@ public class UserCreator {
                 newUser.setClassroom(classroom);
                 if(isPresent(newUser)){ ((Student) newUser).setPresence(true); }
             }
-                
+
             users.add(newUser);
             }
-        //users.remove(0); //remove csv header //opiepszyc serweryna za to niedopaczenie
+
     }
 
     public List<User> getUsersList(){

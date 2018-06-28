@@ -1,8 +1,10 @@
+package com.csvhandlers;
+
+import com.models.User;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.FileWriter;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 
@@ -53,8 +55,9 @@ public class UserArchivist {
         FileWriter fw;
         try{
             fw = new FileWriter(filename, false);
-
-            fw.write(header+ "\n");
+            if(!header.isEmpty()) {
+                fw.write(header + "\n");
+            }
             for (String line : list) {
                 fw.write(line + "\n");
             }

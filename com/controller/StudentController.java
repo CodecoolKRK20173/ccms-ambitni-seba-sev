@@ -1,4 +1,8 @@
-import java.util.ArrayList;
+package com.controller;
+
+import com.models.Assignment;
+import com.models.Student;
+import com.view.View;
 import java.util.List;
 import java.util.Scanner;
 import java.util.InputMismatchException;
@@ -38,7 +42,6 @@ public class StudentController{
                         break;
                     case 0:
                         menuRunning=false;
-                        System.exit(0);
                         break;
                 }
             }

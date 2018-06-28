@@ -1,3 +1,7 @@
+package com.models;
+
+import com.models.User;
+
 import java.util.ArrayList;
 
 public class Employee extends User{

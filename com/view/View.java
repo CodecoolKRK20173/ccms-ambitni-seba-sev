@@ -1,3 +1,5 @@
+package com.view;
+
 import java.util.List;
 
 public class View {

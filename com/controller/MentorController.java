@@ -1,14 +1,19 @@
+package com.controller;
+
+import com.models.Assignment;
+import com.models.Student;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.InputMismatchException;
-
+import com.view.View;
 public class MentorController{
     
-    List<Assignment> assignments = Assignment.getAssignments();
-    ArrayList<Student> students = Student.getStudents();
-    String header = "Mentor";
-    Scanner input = new Scanner(System.in);;
+    private List<Assignment> assignments = Assignment.getAssignments();
+    private ArrayList<Student> students = Student.getStudents();
+    private String header = "Mentor";
+    private Scanner input = new Scanner(System.in);;
 
     public void launchController(){
 
@@ -20,8 +25,7 @@ public class MentorController{
                 System.out.println("\n");
                 printMenu();
                 choice = promptForInt();
-                String contact = getStudentContact();
-                Student chosenStudent = chooseStudent(contact, students);
+
 
                 switch(choice){
 
@@ -35,14 +39,14 @@ public class MentorController{
                         //add students to classroom
                         View.clearTerminalScreen();
                         printStudents();
-                        addStudentToClassroom(chosenStudent);
+                        addStudentToClassroom(chooseStudent(getStudentContact(), students));
                         break;
 
                     case 3:
                         //remove student from classroom
                         View.clearTerminalScreen();
                         printStudents();
-                        removeStudentFromClassroom(chosenStudent);
+                        removeStudentFromClassroom(chooseStudent(getStudentContact(), students));
                         break;
 
                     case 4:
@@ -63,13 +67,14 @@ public class MentorController{
                         //gradeAssignment
                         View.clearTerminalScreen();
                         gradeAssignment(assignments);
+                        break;
 
                     case 7:
                     //check attendance
                         checkPresenceOfStudents();
-
+                        break;
                     case 0:
-                        System.exit(0);
+                        menuRunning = false;
                         break;
                 }
             }
@@ -86,6 +91,7 @@ public class MentorController{
         while(num == null){
             try {
                 num = input.nextInt();
+                input.nextLine();
             } catch (InputMismatchException e){
                 input.next();
             }
@@ -123,40 +129,62 @@ public class MentorController{
     }
 
     private void addAssignment(){
-        String assignmentName = input.nextLine();
-        Assignment assign = new Assignment(assignmentName);
+        View.print("Enter new assignment name:");
+        Assignment assign = new Assignment(input.nextLine());
         Assignment.addAssignment(assign);
-
     }
 
-    private String chooseAssignmentName(){
-        String assignName = input.nextLine();
-        return assignName;
-    }
-
-    private Assignment getAssignment(String assignName, List<Assignment> assignments){
-        Assignment chosenAssignment = null;
-        for(Assignment assign : assignments){
-            if(assign.getName().equals(assignName)){
-                chosenAssignment = assign;
-            }
-           
-        }            
-        return chosenAssignment;
+    private Assignment getAssignment(int option){
+        Student s = students.get(option);
+        for(Assignment assign : s.getAssigments()){
+            View.print(assign.toString());
+        }
+        View.print("Chose assignment: ");
+        int choose = promptForInt();
+        return s.getAssignment(choose - 1);
     }
 
     private void gradeAssignment(List<Assignment> assignments){
-        String assignName = chooseAssignmentName();
-        Assignment assign = getAssignment(assignName, assignments);
+        View.clearTerminalScreen();
+        printStudNames();
+        View.print("Choose student:");
+        int option = promptForInt();
+        Assignment assign = getAssignment(option-1);
+        View.print("Enter a grade for Assignment:");
         int grade = promptForInt();
         assign.setGrade(grade);
     
     }
 
-    //@TODO
-    private void checkPresenceOfStudents(){
 
+    private void checkPresenceOfStudents(){
+        boolean checked = false;
+
+        while(!checked){
+            int i = 1;
+            printStudNames();
+            View.print("0.End");
+            View.print("Select student to change presence: ");
+            int option = promptForInt();
+            if(option == 0){
+                checked = true;
+            }else{
+                Student s = students.get(option-1);
+                s.setPresence(!s.isPresent());
+            }
+        }
     }
+
+    private void printStudNames(){
+        View.clearTerminalScreen();
+        int i = 1;
+        for(Student s : students){
+            View.print(i +"."+ s.getName() + " presence: " + s.isPresent().toString() + " No. Assignments: "
+                    + s.getAssigments().size());
+            i++;
+        }
+    }
+
 
     private String getStudentContact(){
         System.out.println("\nEnter student's e-mail");

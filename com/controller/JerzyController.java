@@ -1,15 +1,25 @@
+package com.controller;
+
+import com.models.Mentor;
+import com.models.Student;
+import com.models.User;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.InputMismatchException;
-
+import com.view.View;
 public class JerzyController{
 
-    List<User> mentors = Mentor.getMentors();
-    ArrayList<Student> students = Student.getStudents();
-    View view = new View();
-    String header = "Jerzy";
-    Scanner input = new Scanner(System.in);;
+    private List<User> mentors = Mentor.getMentors();
+    private ArrayList<Student> students = Student.getStudents();
+    private String header = "Jerzy";
+    private Scanner input = new Scanner(System.in);
+    private List<User> users;
+
+    public JerzyController(List<User> users){
+        this.users = users;
+    }
 
     public void launchController(){
 
@@ -25,36 +35,35 @@ public class JerzyController{
                 switch(choice){
                     case 1:
                         //show mentors
-                        view.clearTerminalScreen();
+                        View.clearTerminalScreen();
                         printMentors();
                         break;
                     case 2:
                         //show students
-                        view.clearTerminalScreen();
+                        View.clearTerminalScreen();
                         printStudents();
                         break;
                     case 3:
                         //add mentor
-                        view.clearTerminalScreen();
+                        View.clearTerminalScreen();
                         addMentor();
                         break;
                     case 4:
                         //remove mentor
-                        view.clearTerminalScreen();
+                        View.clearTerminalScreen();
                         String contact = getMentorContact();
                         User chosenMentor = chooseMentor(contact, mentors);
                         removeMentor(chosenMentor, mentors);
                         break;
                     case 5:
                         //edit mentor data
-                        view.clearTerminalScreen();
+                        View.clearTerminalScreen();
                         getMentorContact();
-                        //chosenMentor = null;
                         editMentorData(mentors);
                         break;
                     case 0:
-                    System.exit(0);
-                    break;
+                        menuRunning = false;
+                        break;
                 }
             }
 
@@ -79,12 +88,12 @@ public class JerzyController{
     
 
     private void printMenu(){
-        view.printJerzyMenu();
+        View.printJerzyMenu();
     }
 
     private void printMentors(){
         for(User mentor : mentors)
-            view.print(mentor.toString());
+            View.print(mentor.toString());
         
     }
 
@@ -99,6 +108,7 @@ public class JerzyController{
         System.out.print("\nMentor's conact e-mail: ");
         String contact = input.nextLine();
         User mentor = new Mentor(login, password, name, contact);
+        users.add(mentor);
         
     }
 
@@ -127,6 +137,7 @@ public class JerzyController{
         if(chosenMentor == null){
             chosenMentor = chooseMentor(contact, mentors);
             mentors.remove(chosenMentor);
+            users.remove(chosenMentor);
             System.out.println("\nMentor removed!");
         }else System.out.println("\nMentor not found!");
         
@@ -155,7 +166,7 @@ public class JerzyController{
 
     private void printStudents(){
         for(User student : students){
-            view.print(student.toString());
+            View.print(student.toString());
         }
     }
 

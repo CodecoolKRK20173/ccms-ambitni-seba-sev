@@ -1,8 +1,9 @@
+package com.models;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student extends User{
+public class Student extends User {
     private static ArrayList<Student> students = new ArrayList<>();
     private ArrayList<Assignment> assignments = new ArrayList<>();
     private boolean presence = false;
@@ -63,7 +64,7 @@ public class Student extends User{
     }
 
     public String toString(){
-        return super.toString() + "Classroom: " + classroom + " Presence: " + isPresent().toString();
+        return super.toString() + " Classroom: " + classroom + " Presence: " + isPresent().toString();
     }
 
     public static List<String> presenceCSV(){

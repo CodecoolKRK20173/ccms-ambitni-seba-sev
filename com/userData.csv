@@ -1,7 +1,7 @@
 class,name,login,password,contact,classroom
-Jerzy,Jerzy,admin,admin,420 213 769, 
-Mentor,Marek,marek,americansmile,mareczek@buziaczek.pl, 
-Mentor,Dominik,domino,diewhenever93,dominik@unitydevs.com, 
+Jerzy,Jerzy,admin,admin,420 213 769,
+Mentor,Marek,marek,americansmile,mareczek@buziaczek.pl,
+Mentor,Dominik,domino,diewhenever93,dominik@unitydevs.com,
 Student,Filip Brzozowski,fbrzozowski,makowiec,fbrzozowski@gmail.com,Web
 Student,Zenek Martyniuk,akcent,discoponadwszystko,zenoo@akcent.pl,Java
 Student,Marian Kowalski,mkowalski,wielkabialapolska,mariankowalski@onr.com.pl,Prog Basic
@@ -9,13 +9,14 @@ Student,Ewaryst Dobdziak,edobdziak,ewaryst,ewarystdobdziak@antonisz.com,Web
 Student,Tales Miletańczyk,tales,geometria,taleszmiletu@maths.gr,Java
 Student,Publiusz Korneliusz Tacyt,tataczyta,cytatytacyta,pkt@dobrerapsy.op.pl,Web
 Student,Aleksander Kwaśniewski,olo,choroba,olek@finlandia.fi,Prog Basic
-Employee,Pani Księgowa,paniksiegowa1,ksiegowosc,ksiegowosc@codecool.com, 
-Employee,Vasily Borsukov,vasyl,kochamsmokazbyszka,vasyl@wyczesanybazant.com, 
+Employee,Pani Księgowa,paniksiegowa1,ksiegowosc,ksiegowosc@codecool.com,
+Employee,Vasily Borsukov,vasyl,kochamsmokazbyszka,vasyl@wyczesanybazant.com,
 Student,Django,django,thedissilent,django@tarantino.com,Web
 Student,Wściekły Wąż,wonszrzeczny,jestniebiezpieczny,wscieknientywonsz@panandrzej.com.pl,Prog Basic
 Student,Paweł Skoczyński,paweljumper,tojuzsiekameruje,paweuek@op.pl,Java
 Student,Adam Miauczyński,miauczek,zawszedrugi,panrezyser@nicsmiesznego.pl,Web
 Student,Sylwester Miauczyński,sylwuniu,wezsietato,jaktatuszrobidziubek@toniemawewsi.pl,Prog Basic
-Mentor,Jan Robot,captcha,iamnotrobot,niejestemrobotem@captcha.com, 
+Mentor,Jan Robot,captcha,iamnotrobot,niejestemrobotem@captcha.com,
 Student,Wiesław Łęcina,uleciny,niezaznaszszczeciny,panwiesiek@budiwiesiex.pl,Web
 Student,Mateusz Kupiec,tiger,bonzo,plujenawastotalnie@palhajs.tv,Prog Basic
+Mentor,Mateo Skubany,skubi,wszystkobezsensu,scooby@duby.do,

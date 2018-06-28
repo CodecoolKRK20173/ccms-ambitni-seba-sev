@@ -1,13 +1,16 @@
+package com.controller;
+
+import com.models.Student;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.InputMismatchException;
-
+import com.view.View;
 public class EmployeeController{
     
     ArrayList<Student> students = Student.getStudents();
-    View view = new View();
     String header = "Employee";
-    Scanner input = new Scanner(System.in);;
+    Scanner input = new Scanner(System.in);
 
     public void launchController(){
 
@@ -24,12 +27,12 @@ public class EmployeeController{
                     switch(choice){
                     case 1:
                         //show students
-                        view.clearTerminalScreen();
+                        View.clearTerminalScreen();
                         printStudents();
                         break;
                         
                     case 0:
-                        System.exit(0);
+                        menuRunning = false;
                         break;
                     }
                 }
@@ -56,11 +59,11 @@ public class EmployeeController{
     
 
     private void printMenu(String header){
-        view.printEmployeeMenu(header);
+        View.printEmployeeMenu(header);
     }
     
     private void printStudents(){
         for(Student student : students)
-            view.print(student.toString());
+                View.print(student.toString());
     }
 }
